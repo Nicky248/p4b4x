@@ -1,0 +1,106 @@
+<md-toolbar>
+  <div>
+    <img class="img-responsive" src="../assets/logopng.png" alt="poboxperu">
+  </div>
+  <span class="example-fill-remaining-space"></span>
+  <span class="welcome">{{user.username + " " + user.lastname}}</span>
+  <button [routerLink]="['/login']" md-button class="app-icon-button" color="accent">
+      <i class="material-icons">exit_to_app</i>
+    </button>
+</md-toolbar>
+<md-tab-group>
+  <md-tab label="Envios">
+    <table class="table">
+      <thead>
+        <tr class="thead">
+          <th>#</th>
+          <th>Estatus</th>
+          <th>Tracking</th>
+          <th>Contenido</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody class="tbody" *ngFor="let shipping of shippings| paginate: { itemsPerPage: 10, currentPage: p }; let i = index ">
+        <tr class="rowItems">
+          <th>{{ i + 1}}</th>
+          <th>{{ shipping.status }}</th>
+          <th>{{ shipping.tracking }}</th>
+          <th>{{ shipping.content }}</th>
+          <th>{{ shipping.price }}</th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginationDiv">
+      <pagination-controls class="paginationDiv" (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </md-tab>
+  <md-tab label="Pre-alerta">
+    <md-card>
+      <md-card-content>
+        <div>
+          <h1 >Pre-alerta</h1>
+          <form name="preAlert" #f="ngForm" (ngSubmit)="f.form.valid && preAlert()" novalidate>
+            <md-select [(ngModel)]="model.courier" name="courier" placeholder="Courier" #name="ngModel" value="courier" required>
+              <md-option *ngFor="let courier of couriers">{{courier}}</md-option>
+            </md-select>
+            <br>
+            <md-input name="tracking" dividerColor="accent" class="demo-full-width" 
+            [(ngModel)]="model.tracking" #tracking="ngModel" placeholder="Tracking" required></md-input>
+            <br>
+            <md-input name="arrivedDate" dividerColor="accent" class="demo-full-width" 
+            [(ngModel)]="model.arrivedDate" #arrivedDate="ngModel" placeholder="Entrega estimada" required></md-input>
+            <br>
+            <md-input name="provider" dividerColor="accent" class="demo-full-width" 
+            [(ngModel)]="model.provider" #provider="ngModel" placeholder="Proveedor" required></md-input>
+            <br>
+            <md-input name="amount" dividerColor="accent" class="demo-full-width" 
+            [(ngModel)]="model.amount" #amount="ngModel" placeholder="Monto en dolares" required></md-input>
+            <br>
+            <md-input name="content" dividerColor="accent" class="demo-full-width" 
+            [(ngModel)]="model.content" #content="ngModel" placeholder="Contenido" required></md-input>
+
+            <div ngFileDrop
+              class="ngFileDrop"
+              [options] = "options"
+              (onUpload) = "handleUpload($event)"
+              [ngClass] = "{'file-over': hasBaseDropZoneOver}"
+              (onFileOver) = "fileOverBase($event)"
+              (beforeUpload) = "beforeUpload($event)">
+
+              <div *ngIf="noUpload" class="noUpload">
+                {{noUpload}}
+              </div>
+            </div>
+            <br>
+            <button md-raised-button align="center" color="accent">Enviar</button>
+          </form>
+        </div>
+      </md-card-content>
+    </md-card>
+  </md-tab>
+<md-tab label="Comprar por mi">
+    <md-card>
+      <md-card-content>
+        <div>
+          <h1 >Comprar por mi</h1>
+          <form name="shopper" #r="ngForm" (ngSubmit)="r.form.valid && shopper()" novalidate>
+            <md-input-container dividerColor="accent" class="example-full-width">
+              <textarea md-input name="products" [(ngModel)]="shopperModel.products" #products="ngModel" placeholder="Productos"></textarea>
+            </md-input-container>
+
+            <md-input-container class="example-full-width">
+              <textarea md-input name="links" [(ngModel)]="shopperModel.links" #links="ngModel" placeholder="Links de Referencia"></textarea>
+            </md-input-container>
+
+            <md-input-container class="example-full-width">
+              <textarea md-input name="coments" [(ngModel)]="shopperModel.coments" #coments="ngModel" placeholder="Comentarios adicionales"></textarea>
+            </md-input-container>
+            <br>
+            
+            <button md-raised-button align="center" color="accent">Enviar</button>
+          </form>
+        </div>
+      </md-card-content>
+    </md-card>
+  </md-tab>
+</md-tab-group>

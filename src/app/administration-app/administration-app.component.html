@@ -1,0 +1,110 @@
+<md-toolbar>
+  <div>
+    <img class="img-responsive" src="../assets/logopng.png" alt="poboxperu">
+  </div>
+  <span class="example-fill-remaining-space"></span>
+  <!--<span class="welcome">{{user.username + " " + user.lastname}}</span>-->
+  <button [routerLink]="['/loginAdmin']" md-button class="app-icon-button" color="accent">
+      <i class="material-icons">exit_to_app</i>
+    </button>
+</md-toolbar>
+<md-tab-group>
+  {{ prealert }}
+  <md-tab label="Pre-alertas">
+    <table class="table">
+      <thead>
+        <tr class="thead">
+          <th>#</th>
+          <th>Estimacion</th>
+          <th>Tracking</th>
+          <th>Courier</th>
+          <th>Contenido</th>
+          <th>Proveedor</th>
+        </tr>
+      </thead>
+      <tbody class="tbody" *ngFor="let prealert of prealerts| paginate: { itemsPerPage: 10, currentPage: p }; let i= index " [ngSwitch]="detailShipping">
+        <tr (click)="detailShipping= i + 1" class="rowItems">
+          <th>{{ i + 1}}</th>
+          <th>{{ prealert.estimated_arrival_miami }}</th>
+          <th>{{ prealert.tracking }}</th>
+          <th>{{ prealert.courier }}</th>
+          <th>{{ prealert.content }}</th>
+          <th>{{ prealert.provider }}</th>
+        </tr>
+        <tr *ngSwitchCase="i +1">
+          <th colspan="6">
+            <div>
+              <md-card>
+                <md-card-content>
+                  <div>
+                    <button md-button (click)="openDialog(selected = prealert)">Ver factura</button>
+                  </div>
+                  <div>
+                    <form name="form" #f="ngForm" (ngSubmit)="shippings()" novalidate>
+                      <md-input name="content" dividerColor="accent" class="mdInput" 
+                      [(ngModel)]="shipping.content" #content="ngModel" placeholder="Contenido" required></md-input>
+                      <md-input name="costo" dividerColor="accent" class="mdInput" 
+                      [(ngModel)]="shipping.price" #costo="ngModel" placeholder="Costo de Envio" required></md-input>
+                      <br><br>
+                      <button md-raised-button align="center" color="accent">Enviar</button>
+                    </form>
+                  </div>
+                </md-card-content>
+              </md-card>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginationDiv">
+      <pagination-controls class="paginationDiv" (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </md-tab>
+  <md-tab label="Personal Shopper">
+    <table class="table">
+      <thead>
+        <tr class="thead">
+          <th>#</th>
+          <th>Date</th>
+          <th>Coments</th>
+          <th>Products</th>
+          <th>Links</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody class="tbody" *ngFor="let personalShoppers of personalShopper| paginate: { itemsPerPage: 10, currentPage: p }; let h= index " [ngSwitch]="detailShopper">
+        <tr (click)="detailShopper= h + 1" class="rowItems">
+          <th>{{ h + 1}}</th>
+          <th>{{ personalShoppers.date }}</th>
+          <th>{{ personalShoppers.coments }}</th>
+          <th>{{ personalShoppers.products }}</th>
+          <th>{{ personalShoppers.links }}</th>
+          <th>{{ personalShoppers.status }}</th>
+        </tr>
+        <tr *ngSwitchCase="h +1">
+          <th colspan="6">
+            <div>
+              <md-card>
+                <md-card-content>
+                  <div>
+                    <form name="actPerShop" #pershop="ngForm" (ngSubmit)="envStatusPersonalShopper(selectedShopper = personalShoppers , formStatusShopper)" novalidate>
+                      <md-select [(ngModel)]="formStatusShopper.status" name="status" placeholder="Status" #name="ngModel" required>
+                        <md-option [value]="statusPersonalShopper.status" *ngFor="let statusPersonalShopper of statusPersonalShoppers">{{statusPersonalShopper.statusName}}</md-option>
+                      </md-select>
+                      <br>
+                      <button md-raised-button align="center" color="accent">Enviar</button>
+                    </form>
+                  </div>
+                </md-card-content>
+              </md-card>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginationDiv"> 
+      <pagination-controls class="paginationDiv" (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </md-tab>
+</md-tab-group>
+

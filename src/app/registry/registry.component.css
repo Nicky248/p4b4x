@@ -1,0 +1,40 @@
+.div1{
+    display: flex;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
+    background-color:  rgb(192,192,192);
+    background-size: cover;
+    height: 100%;
+}
+
+.div2{
+    background-color:#f00;
+    color: rgba(255, 255, 255, 1);
+    height: 278px;
+    display: block;
+}
+.div3{
+    margin: auto;
+    width: 640px;
+    display: block;
+
+}
+md-card{
+    margin-top: -100px;
+    margin-bottom: 48px;
+    word-wrap: break-word;
+    display: block;
+}
+md-toolbar{
+   background: transparent;
+   /*margin-bottom: 20px;*/
+   color: rgb(192,192,192);
+}
+md-input{
+  margin: 10px;
+  width: 90%;  
+}
+
+.divRadio{
+    margin-left: 10px;
+}

@@ -1,0 +1,25 @@
+<div class="divBackground">
+  <div class="divLogin">
+    <md-card class="md-elevation-z24">
+      <md-toolbar>
+        <div>
+          <img class="img-responsive" src="../assets/logopng.png" alt="poboxperu">
+        </div>
+      </md-toolbar>
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && login()" novalidate>      
+        <md-input name="email" dividerColor="accent" class="demo-full-width" 
+         [(ngModel)]="model.email" #email="ngModel" placeholder="Usuario o correo" required></md-input>
+
+        <md-input name="password" dividerColor="accent" class="demo-full-width" type="password" 
+        [(ngModel)]="model.password" #password="ngModel" placeholder="Password" required></md-input>
+                  
+        <div class="divCheck">
+          <a href="registry"> Registrate </a>
+        </div>
+        <button md-raised-button align="center" color="accent">Iniciar Sesión</button>
+      </form>
+      <br/>
+      <div *ngIf="error" class="alert">{{error}}</div>
+    </md-card>
+  </div>
+</div>

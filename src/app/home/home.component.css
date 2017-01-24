@@ -1,0 +1,126 @@
+.img-responsive{   
+    display: block;
+    max-width: 30%;
+    height: auto;
+    width: auto;
+    max-height: 100%;
+ }
+ md-toolbar{
+     margin-top: 10px;
+ }
+ md-toolbar-row{
+     border-bottom: #f00 1px;
+ }
+ .example-fill-remaining-space {
+   flex: 1 1 auto auto;
+}
+.app-icon-button {
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
+  font-weight: normal;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  min-width: 0;
+  padding: 5px  ;
+  text-align: left;
+  text-decoration: none;
+}
+.material-icons{
+    font-size: 30px;
+    margin: auto;
+}
+.welcome{
+    padding: 10px;
+    white-space: pre;
+}
+h1{
+    text-align: center;
+    color:rgb(192,192,192);
+    /*color: #f00;*/
+}
+.file-over{
+    border: dotted 3px red !important;
+}
+.ngFileDrop{
+    margin-left: 50px;
+    height: 100px;
+    width: 100px;
+    border: dotted 3px blue;
+}
+.noUpload{
+    margin: auto;
+}
+.img-responsive{   
+    display: block;
+    max-width: 30%;
+    height: auto;
+    width: auto;
+    max-height: 100%;
+ }
+.table{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    background-color: transparent; 
+    margin: 10px;
+}
+thead{
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    background-color: #373a3c;
+    font-weight: bold;
+}
+tr{
+    display: table-row;
+    background-color: rgba(0, 0, 0, .05);
+    vertical-align: inherit;
+    border-color: inherit;
+}
+th{
+    padding: .75rem;
+    border-top: 1px solid #eceeef;
+    
+    text-align: center;
+}
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.thead{
+    font-size:15px; 
+    color: #fff;
+}
+.tbody{
+    font-size:13px; 
+    color: #000;
+}
+/*.rowItems:hover{
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+    color: #d32f2f;
+    box-shadow: -1px 0px 5px -1px rgba(0,0,0,0.75);
+    font-weight: bold;
+}*/
+.paginationDiv{
+    margin: auto;
+    width: 100%;
+}
+.paginationDiv{
+    margin: auto;
+
+}
+.mdInput{
+    margin: 5px;
+}
+.example-full-width {
+  width: 100%;
+}

@@ -1,0 +1,64 @@
+<div class="div1">
+  <div class="div2">
+  </div>
+  <div class="div3">
+    <md-card class="md-elevation-z24">
+      <md-toolbar>
+        <div>
+          <h1> Registro </h1>
+        </div>
+      </md-toolbar>
+
+      <form name="registry" #f="ngForm" (ngSubmit)="f.form.valid && registry()" novalidate>
+
+        <md-input name="name" dividerColor="accent" class="demo-full-width" 
+         [(ngModel)]="model.name" #name="ngModel" placeholder="Nombre" required></md-input>
+
+        <md-input name="lastname" dividerColor="accent" class="demo-full-width" 
+        [(ngModel)]="model.lastname" #lastname="ngModel" placeholder="Apellido" required></md-input>
+
+        <md-input name="birthdate" dividerColor="accent" class="demo-full-width" 
+         [(ngModel)]="model.birthdate" #bornDate="ngModel" placeholder="Fecha de nacimiento" required></md-input>
+
+        <div class="divRadio">
+          <md-radio-group [(ngModel)]="model.docType" name="docType">
+            <md-radio-button value="DNI">DNI</md-radio-button>
+            <md-radio-button value="CE">CE</md-radio-button>
+            <md-radio-button value="RUC">RUC</md-radio-button>
+          </md-radio-group>
+        </div>
+
+        <md-input name="numberDoc" dividerColor="accent" class="demo-full-width" 
+          [(ngModel)]="model.numberDoc" #numberDoc="ngModel" placeholder="Numero de documento" required></md-input>
+        
+        <md-input name="addressHouse" dividerColor="accent" class="demo-full-width" 
+        [(ngModel)]="model.addressHouse" #addressHouse="ngModel" placeholder="Direccion de vivienda" required></md-input>
+
+        <md-input name="districtHouse" dividerColor="accent" class="demo-full-width" 
+        [(ngModel)]="model.districtHouse" #districtHouse="ngModel" placeholder="Distrito de vivienda" required></md-input>
+
+        <md-input name="postalCode" dividerColor="accent" class="demo-full-width" 
+        [(ngModel)]="model.postalCode" #postalCode="ngModel" placeholder="Codigo postal" required></md-input>
+
+        <md-input name="email" dividerColor="accent" class="demo-full-width" 
+          [(ngModel)]="model.email" #email="ngModel" placeholder="Correo" required></md-input>
+
+        <md-input name="confirmemail" dividerColor="accent" class="demo-full-width" 
+          placeholder="Confirmar correo" required></md-input>
+
+        <md-input name="password" dividerColor="accent" class="demo-full-width" type="password" 
+        [(ngModel)]="model.password" #password="ngModel" placeholder="Password" required></md-input>
+
+        <md-input name="confirmpassword" dividerColor="accent" class="demo-full-width" type="password" 
+        placeholder="Confirmar password" required></md-input>
+                  
+        <!--<div class="divCheck">
+          <md-checkbox >Recordarme</md-checkbox><br/>
+        </div>-->
+        <button md-raised-button align="center" color="accent">Registrarse</button>
+      </form>
+      <br/>
+      <div *ngIf="error" class="alert">{{error}}</div>
+    </md-card>
+  </div>
+</div>
